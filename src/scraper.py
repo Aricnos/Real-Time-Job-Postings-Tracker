@@ -1,33 +1,22 @@
-# this script coordinates fetching, parsing and sacing job listings
-
-import argparse
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from config import BRAVE_PATH, CHROMEDRIVER_PATH, PAGE_LOAD_WAIT
 import time
-from bs4 import BeautifulSoup
-from src.parser import parser_job_listings
-from src.utils import save_to_csv
-import requests
 
-def scrape_jobs(url):
-    repsonse = requests.get(url)
-    repsonse.raise_for_status()
-    soup = BeautifulSoup(repsonse.text, 'htmlparser')
-    jobs = parser_job_listings(soup)
+def config_driver():
+    options = Options()
+    options.binary_location = BRAVE_PATH
+    options.add_argument('--headless')
+    options.add_argument('--disable-gpu')
+    options.add_argument('--no-sandbox')
+    service = Service(executable_path = CHROMEDRIVER_PATH)
+    return webdriver.Chrome(service = service, options=options)
 
-    time.sleep(2) # be polite to the site
-
-    return jobs
-
-
-def main():
-
-    parse = argparse.ArgumentParser(description='Scrape remote job listing from a url')
-    parse.add_argument('url', type=str, help='The Url for job listing to scrape from')
-    parse.add_argument('output_file', type=str, help='The CSV file to save the scrape data to')
-    args = parse.parse_argv()
-
-    jobs  = scrape_jobs(args.url)
-    save_to_csv(jobs, args.output_file)
-    print(f"Scraped {len(jobs)} jobs and saved to {args.output_file}")
-
-if __name__ =='__main__':
-    main()
+def fetch_page_source(url):
+    driver = config_driver()
+    driver.get(url)
+    time.sleep(PAGE_LOAD_WAIT)
+    page_source = driver.page_source
+    driver.quit()
+    return page_source
