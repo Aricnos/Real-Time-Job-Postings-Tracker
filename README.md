@@ -1,17 +1,25 @@
-# 🧰 RemoteOK Job Scraper
+# Selenium Job Scraper
 
-A modular Python project to scrape remote job listings from [RemoteOK.com](https://remoteok.com) and save them into a structured CSV file. Designed for real-world practice, portfolio showcasing, and easy extension.
+A real-world web scraping project built with Selenium and BeautifulSoup to scrape remote job listings from [remoteok.com](https://remoteok.com), using the Brave browser.
 
----
+## 🔧 Features
+
+- Uses Selenium for dynamic content rendering
+- Parses HTML with BeautifulSoup
+- Modular structure: `scraper.py`, `parser.py`, `utils.py`, `config.py`
+- Saves data to `output/jobs.csv`
+- GitHub-ready with proper structure and documentation
 
 ## 📦 Project Structure
 
 remoteok-job-scraper/ 
 ├── src/ 
 │ ├── scraper.py # Entry point: orchestrates the scraping 
-│ ├── parser.py # Contains HTML parsing logic 
+│ ├── parser.py # Contains HTML parsing logic
+│ ├── config.py # Contains browser and chromedriver path in local
+│ ├── main.py # Main function of the project
 │ └── utils.py # Utilities like saving CSV 
-├── data/ 
+├── output/ 
 │ └── jobs.csv # Output CSV with scraped jobs 
 ├── README.md # Project documentation 
 ├── requirements.txt # List of Python dependencies 
@@ -30,7 +38,6 @@ remoteok-job-scraper/
   ✅ Posting date  
 
 - Uses:
-  - `requests` for HTTP requests
   - `BeautifulSoup` for HTML parsing
   - `csv` for structured output
   - `os` for file-safe directory handling
@@ -52,7 +59,7 @@ cd remoteok-job-scraper
 pip install -r requirements.txt
 
 \### 3. Run the scraper
-python src/scraper.py
+python src/main.py
 
 \### 4.Output location
 data/jobs.csv

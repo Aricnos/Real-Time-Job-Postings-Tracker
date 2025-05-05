@@ -1,19 +1,25 @@
-# Python
+gitignore
+# Byte-compiled / optimized / DLL files
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
-*.pyd
-*.log
 
-# Environments
-.env
-.venv/
+# Virtual environments
 venv/
+.env/
+env/
+
+# Output files
+output/
 
 # IDEs
 .vscode/
 .idea/
 
-# Output
-data/*.csv
-*.sqlite3
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and cache
+*.log
+.cache/
