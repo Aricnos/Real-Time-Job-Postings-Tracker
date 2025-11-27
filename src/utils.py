@@ -5,7 +5,7 @@ import os
 def save_to_csv(jobs, filename='output/jobs.csv'):
     os.makedirs(os.path.dirname(filename), exist_ok=True)
 
-    fieldnames = ['title', 'company', 'location', 'tags', 'date_posted']
+    fieldnames = ['Title', 'Company', 'Location', 'Tags', 'Date_posted']
 
 
     # make the writer function to save the filename

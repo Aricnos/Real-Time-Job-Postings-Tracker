@@ -12,6 +12,7 @@ A real-world web scraping project built with Selenium and BeautifulSoup to scrap
 
 ## 📦 Project Structure
 
+```
 remoteok-job-scraper/ 
 ├── src/ 
 │ ├── scraper.py # Entry point: orchestrates the scraping 
@@ -24,7 +25,7 @@ remoteok-job-scraper/
 ├── README.md # Project documentation 
 ├── requirements.txt # List of Python dependencies 
 └── .gitignore # Prevents committing unnecessary files
-
+```
 
 ---
 
