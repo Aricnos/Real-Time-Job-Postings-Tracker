@@ -6,7 +6,7 @@ def main():
     url = "https://remoteok.com"
     html = fetch_page_source(url)
     jobs = parse_jobs(html)
-    print(f"Scraper {len(jobs)} jobs.")
+    print(f"Scrape {len(jobs)} jobs.")
     save_to_csv(jobs)
 
 if __name__ =='__main__':
